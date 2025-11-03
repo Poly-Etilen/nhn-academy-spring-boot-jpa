@@ -1,5 +1,12 @@
 package com.nhnacademy.springbootjpa.entity;
 
+import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+
 // TODO #1: `order_item` 테이블과 매핑될 `OrderItem` Entity 클래스를 작성하세요. foreign key 부분은 무시합니다.
 /*
  * create table order_item
@@ -15,16 +22,18 @@ package com.nhnacademy.springbootjpa.entity;
  *         foreign key (order_id) references "order" (id)
  * );
  */
+@Entity
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@IdClass(OrderItemPk.class)
 public class OrderItem {
-    public OrderItemPk getPk() {
-        return null;
-    }
+    @Id
+    private long orderId;
 
-    public long getItemId() {
-        return 0;
-    }
+    @Id
+    private int lineNumber;
 
-    public int getQuantity() {
-        return 0;
-    }
+    private long itemId;
+    private int quantity;
 }

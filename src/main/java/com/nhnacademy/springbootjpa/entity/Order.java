@@ -1,5 +1,12 @@
 package com.nhnacademy.springbootjpa.entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+
 import java.time.ZonedDateTime;
 
 // TODO #1: `order` 테이블과 매핑될 `Order` Entity 클래스를 작성하세요.
@@ -11,12 +18,20 @@ import java.time.ZonedDateTime;
  *     ordered_at datetime not null
  * );
  */
+@Entity
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    private ZonedDateTime orderedAt;
+
     public long getId() {
-        return 0;
+        return this.id;
     }
 
     public ZonedDateTime getOrderedAt() {
-        return null;
+        return this.orderedAt;
     }
 }

@@ -5,7 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import org.hibernate.validator.constraints.Length;
 
 // TODO #1: `item` 테이블과 매핑될 `Item` Entity 클래스를 작성하세요.
 /*
@@ -25,6 +27,7 @@ public class Item {
     private Long id;
 
     @NotBlank
+    @Length(min = 1, max = 40)
     private String name;
 
     @NotBlank

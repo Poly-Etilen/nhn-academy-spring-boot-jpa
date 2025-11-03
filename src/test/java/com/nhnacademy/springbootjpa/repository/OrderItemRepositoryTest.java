@@ -11,7 +11,6 @@ import org.springframework.test.context.jdbc.Sql;
 import static org.assertj.core.api.Assertions.assertThat;
 
 // TODO #3: 아래 `@Disabled` 어노테이션을 삭제하고 테스트를 통과시키세요.
-@Disabled("temporary")
 @DataJpaTest
 class OrderItemRepositoryTest {
 
@@ -31,8 +30,8 @@ class OrderItemRepositoryTest {
 
         // then
         assertThat(orderItem).isNotNull();
-        assertThat(orderItem.getOrderId()).isEqualTo(orderId);
-        assertThat(orderItem.getLineNumber()).isEqualTo(lineNumber);
+        assertThat(orderItem.getPk().getOrderId()).isEqualTo(orderId);
+        assertThat(orderItem.getPk().getLineNumber()).isEqualTo(lineNumber);
         assertThat(orderItem.getItemId()).isEqualTo(1L);
         assertThat(orderItem.getQuantity()).isEqualTo(3);
     }

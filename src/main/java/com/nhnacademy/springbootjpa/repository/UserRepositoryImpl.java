@@ -20,12 +20,13 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean matches(String id, String password) {
+    public boolean matches(String id, String password, int age) {
         User user = jdbcTemplate.queryForObject(
-                "select id, password from `user` where id = ?1 and password = ?2",
+                "select id, password, age from `user` where id = ?1 and password = ?2",
                 User.class,
                 id,
-                password
+                password,
+                age
         );
         return Objects.nonNull(user) && user.getId().equals(id);
     }
@@ -33,27 +34,29 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User getById(String id) {
         return jdbcTemplate.queryForObject(
-                "select id, password from `user` where id = ?1",
+                "select id, password, age from `user` where id = ?1",
                 new UserRowMapper(),
                 id
         );
     }
 
     @Override
-    public boolean create(String id, String password) {
+    public boolean create(String id, String password, int age) {
         int result = jdbcTemplate.update(
-                "insert into `user` (id, password) values (?, ?)",
+                "insert into `user` (id, password, age) values (?, ?, ?)",
                 id,
-                password
+                password,
+                age
         );
         return result == 1;
     }
 
     @Override
-    public boolean modifyById(String id, String password) {
+    public boolean modifyById(String id, String password, int age) {
         int result = jdbcTemplate.update(
-                "update `user` set password = ?1 where id = ?2",
+                "update `user` set password = ?1, age = ? where id = ?2",
                 password,
+                age,
                 id
         );
         return result == 1;

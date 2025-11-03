@@ -54,7 +54,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public boolean modifyById(String id, String password, int age) {
         int result = jdbcTemplate.update(
-                "update `user` set password = ?1, age = ? where id = ?2",
+                "update `user` set password = ?1, age = ?2 where id = ?3",
                 password,
                 age,
                 id

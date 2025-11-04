@@ -22,12 +22,18 @@ public class Post {
     @NotNull
     private String content;
 
-    @ManyToOne(optional = false)
+
+//    private long memberId;
+    @NotNull
+    @ManyToOne(optional = false) // notnull로 만들고 싶으면
     private Member member;
 
-    public Post(String title, String content, Member member) {
-        this.title = title;
-        this.content = content;
-        this.member = member;
-    }
+//    @ManyToOne(optional = false)
+//    private Member member;
+//
+//    public Post(String title, String content, Member member) {
+//        this.title = title;
+//        this.content = content;
+//        this.member = member;
+//    }
 }

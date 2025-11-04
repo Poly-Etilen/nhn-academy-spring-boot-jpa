@@ -32,4 +32,5 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     // select *
     // from item
     // where price in (...)
+    List<Item> findAllByPriceIn(List<Long> prices);
 }

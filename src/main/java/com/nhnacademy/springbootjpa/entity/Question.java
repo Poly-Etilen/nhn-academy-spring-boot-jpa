@@ -2,6 +2,7 @@ package com.nhnacademy.springbootjpa.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
 import java.time.ZonedDateTime;
@@ -25,6 +26,7 @@ public class Question {
     private Long id;
 
     @NotNull
+    @Size(min = 1, max = 100)
     private String title;
 
     @NotNull

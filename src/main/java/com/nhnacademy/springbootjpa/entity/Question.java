@@ -1,9 +1,6 @@
 package com.nhnacademy.springbootjpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
@@ -29,7 +26,9 @@ public class Question {
 
     @NotNull
     private String title;
+
     @NotNull
+    @Lob //좀 더 큰 text타입을 자동으로 생성함.
     private String content;
     @NotNull
     private ZonedDateTime createdAt;

@@ -14,6 +14,11 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
      *
      * @param quantity 기준 주문 수량
      * @return Item 목록
+     *
+     * select * from Item
+     * left join orderItems
+     * on item.id = orderItems.item_id
+     * where orderItem > quantity
      */
     List<Item> findAllByOrderItemsQuantityGreaterThan(int quantity);
 
@@ -23,6 +28,13 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
      *
      * @param orderedAt 기준 주문 시간
      * @return Item 목록
+     *
+     * select * from Items
+     * left join orderItem
+     * on orderItem.itemId
+     * left join order
+     * on order.orderId
+     * where order.ordered_at > orderedAt
      */
     List<Item> findAllByOrderItemsOrderOrderedAtAfter(ZonedDateTime orderedAt);
 }
